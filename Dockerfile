@@ -1,23 +1,10 @@
-# xlsx2csv inotify
-# execl转csv的python插件 需要安装pip
+FROM alpine:3.2
 
-FROM debian:8
-MAINTAINER maintain@geneegroup.com
+RUN apk update && \
+    apk add inotify-tools py-pip && \
+    rm -rf /var/cache/apk/* && \
+    pip install xlsx2csv
 
-ENV DEBIAN_FRONTEND noninteractive
+ADD start.sh /start.sh
 
-# apt-get update
-RUN apt-get -q update
-
-# install inotify-tools
-RUN apt-get install -yq inotify-tools
-
-# install pip
-RUN apt-get install -yq python-pip
-
-# install xlsx2csv
-RUN pip install xlsx2csv
-
-ADD xlsx2csv.sh /xlsx2csv.sh
-
-CMD ["/xlsx2csv.sh"]
+CMD ["/start.sh"]
