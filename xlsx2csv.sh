@@ -6,6 +6,7 @@ destDIR=/data/parsed/
 do
     tmp=${tmpDIR}${file%%.*}/
 	mkdir -p ${tmp}
+    echo "Start to convert: ${srcDIR}${file}"
 	xlsx2csv -a -i ${srcDIR}${file} ${tmp}
     if [ "$(ls -v ${tmp}) 2> /dev/null)" == "" ]; then
         echo "Failed to convert: ${srcDIR}${file}"
