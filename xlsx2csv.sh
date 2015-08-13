@@ -7,5 +7,10 @@ do
     tmp=${tmpDIR}${file%%.*}/
 	mkdir -p ${tmp}
 	xlsx2csv -a -i ${srcDIR}${file} ${tmp}
-    mv ${tmp} ${destDIR}
+    if [ "$(ls -v ${tmp}) 2> /dev/null)" == "" ]; then
+        echo "Failed to convert: ${srcDIR}${file}"
+    else 
+        mv ${tmp} ${destDIR}
+        echo "Success: ${srcDIR}${file}"
+    fi
 done
