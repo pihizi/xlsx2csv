@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 srcDIR=/data/upload/
 tmpDIR=/data/tmp/
 destDIR=/data/parsed/
