@@ -4,7 +4,7 @@ tmpDIR=/data/tmp/
 destDIR=/data/parsed/
 /usr/bin/inotifywait -mrq --format '%f' -e create ${srcDIR} | while read file
 do
-    tmp=${tmpDIR}${file%%.*}/
+    tmp=${tmpDIR}${file}/
 	mkdir -p ${tmp}
     echo "Start to convert: ${srcDIR}${file}"
 	xlsx2csv -a -i ${srcDIR}${file} ${tmp}
