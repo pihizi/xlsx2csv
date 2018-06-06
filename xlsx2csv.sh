@@ -2,7 +2,7 @@
 srcDIR=/data/upload/
 tmpDIR=/data/tmp/
 destDIR=/data/parsed/
-/usr/bin/inotifywait -mrq --format '%f' -e create ${srcDIR} | while read file
+/usr/bin/inotifywait -mrq --format '%f' -e create ${srcDIR} -e move_to ${srcDIR} | while read file
 do
     tmp=${tmpDIR}${file}/
 	mkdir -p ${tmp}
